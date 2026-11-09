@@ -1,0 +1,68 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "golviva",
+  "version": "2.1.0",
+  "description": "Football match predictions for every game of Europe's top leagues — win, draw and loss chances, likeliest score, likely scorers and predicted line-ups — plus season projections with each club's title, top-four and relegation chances, independent player valuations with the reasons behind them, scouting, live scores, match centres, league tables, season statistics and transfer news.",
+  "author": {
+    "name": "T1M LLC",
+    "email": "admin@golviva.com",
+    "url": "https://golviva.com"
+  },
+  "homepage": "https://golviva.com/en/mcp",
+  "repository": "https://github.com/target1m/golviva-mcp",
+  "license": "MIT",
+  "keywords": [
+    "football",
+    "soccer",
+    "match predictions",
+    "football predictions",
+    "predicted lineups",
+    "title race",
+    "relegation",
+    "season projections",
+    "player valuation",
+    "transfer value",
+    "scouting",
+    "live scores",
+    "league tables",
+    "statistics",
+    "transfer news"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Golviva",
+        "shortDescription": "Predictions, values & scores",
+        "longDescription": "Golviva brings football match predictions, season projections, player valuations and live scores into ChatGPT.\n\nAsk who will win a match and get Golviva's prediction for any game of the leagues it covers: the model's chances of a home win, a draw and an away win, the likeliest scores, total goals and both teams to score, the likeliest scorers and the predicted line-ups, replaced by the confirmed ones about an hour before kick-off. Every morning the model also locks in its 10 most confident calls of the day and grades each one after the final whistle, so its hit rate over the last 7 and 30 days stays on the record.\n\nAsk who will win the league and get Golviva's season projection: the rest of the season played out thousands of times, with every club's chance of the title, the top four and the Champions League places, Europe and relegation, and its expected points.\n\nAsk what a footballer is worth and get Golviva's estimated transfer value next to the market value, with the factors that explain the gap: performance, age and potential, contract and durability. Compare up to four players, scout by league, club, nation, position, age, preferred foot and value, and list the most undervalued and overvalued players, the biggest risers and the best young talents.\n\nGolviva also covers live football: scores and fixtures, match centres with events, team statistics and line-ups, league tables, a team's next and recent matches, season leaderboards for goals and assists, and the latest transfer news. Results appear as interactive cards you can tap through to a player, club, league or match.\n\nWho it is for: football fans, fantasy managers, writers and anyone curious about how matches and seasons might go and what players are worth.\n\nGood to know: Golviva's predictions, projections and values are model estimates, not betting advice, financial advice or offers, and Golviva shows no betting odds. Predictions cover the European top divisions plus the Saudi Pro League; live data covers the competitions Golviva follows. Golviva is read-only: it never posts, buys or changes anything. Connecting requires signing in to Golviva.",
+        "developerName": "T1M LLC",
+        "category": "Entertainment",
+        "capabilities": [
+          "Predict any match: win, draw and loss chances",
+          "Likeliest scores, goals and likely scorers",
+          "Predicted line-ups before kick-off",
+          "Season projections: title, top-four and relegation chances",
+          "The day's 10 most confident calls with a public track record",
+          "Estimate a player's transfer value and explain it",
+          "Compare players side by side",
+          "Find undervalued, overvalued and rising players",
+          "Scout players by league, position, age and value",
+          "Live scores, match centres and league tables",
+          "Season statistics and transfer news"
+        ],
+        "websiteURL": "https://golviva.com/en/mcp",
+        "supportURL": "https://golviva.com/en/support",
+        "privacyPolicyURL": "https://golviva.com/en/privacy",
+        "termsOfServiceURL": "https://golviva.com/en/terms",
+        "defaultPrompt": [
+          "Predict Real Madrid's next match: chances, likely scorers and line-ups.",
+          "Who will win the Premier League this season, and who will go down?",
+          "What is Lamine Yamal really worth, and why?"
+        ],
+        "brandColor": "#11915F",
+        "brandColorDark": "#10B981",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}

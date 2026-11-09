@@ -1,0 +1,217 @@
+# Golviva MCP tools — reference
+
+Generated from the server's own tool registrations (server v2.1.0). Endpoint:
+`https://api.golviva.com/mcp` (Streamable HTTP, OAuth sign-in).
+
+Every tool is read-only: `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true`.
+`openWorldHint: true` marks the tools that read live match data from API-Football at call time;
+the rest read Golviva's own database. Every result has a one-line text summary, the same data as
+`structuredContent`, and an interactive card in clients that support MCP Apps.
+
+## `search_football` — Search Golviva
+
+Find players, clubs, leagues and national teams by name (accents optional). Returns ids for the other tools plus each match's Golviva value. Use it when a name is ambiguous or partial; get_player, get_club, get_league and get_national_team also accept plain names directly.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `query` | string (≤ 80 chars) | **required** | A name or part of one, e.g. "Güler", "Galatasaray", "Serie A", "Brazil" |
+
+## `find_players` — Find players
+
+Scout players by attributes: league, club, national team, position, age range, preferred foot and value range, sorted by Golviva value, market value, mispricing (undervalued/overvalued), youth, performance percentile or recent rise. Returns each player's Golviva value next to the market value.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `league` | string (≤ 60 chars) | — | League code or name, e.g. "GB1", "TR1", "Premier League", "Süper Lig" |
+| `club` | string (≤ 80 chars) | — | Club id or name |
+| `nation` | string (≤ 60 chars) | — | National team: ISO-3 code (TUR, ESP, BRA, ENG…) or English name |
+| `position` | `GK` · `DF` · `MF` · `FW` · `CB` · `LB` · `RB` · `DM` · `CM` · `AM` · `LM` · `RM` · `LW` · `RW` · `SS` · `ST` | — | A group (GK/DF/MF/FW) or a specific position code |
+| `min_age` | integer (15–45) | — |  |
+| `max_age` | integer (15–45) | — |  |
+| `foot` | `left` · `right` · `both` | — |  |
+| `min_value` | number (≥ 0) | — | Minimum Golviva value in EUR |
+| `max_value` | number (≥ 0) | — | Maximum Golviva value in EUR |
+| `sort` | `value` · `market_value` · `undervalued` · `overvalued` · `youngest` · `performance` · `rising` | `"value"` |  |
+| `limit` | integer (1–25) | `10` |  |
+
+## `get_player` — Player valuation profile
+
+A player's full Golviva profile: our estimated transfer value next to the market value and the gap between them, the factor breakdown that explains it (performance, age potential, contract, durability, reputation, form), value history, recent season stats, transfer history, contract and similar players. Accepts a player id or a name.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `player` | string (≤ 80 chars) | **required** | Player id (from search) or name, e.g. "Arda Güler", "Lamine Yamal" |
+
+## `compare_players` — Compare players
+
+Side-by-side comparison of 2–4 players: Golviva value vs market value, age, position, performance percentile, every valuation factor and last-season output. Accepts ids or names.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `players` | list of string (≤ 80 chars) (2–4 items) | **required** | 2–4 player ids or names |
+
+## `get_rankings` — Player rankings
+
+Ranked player lists from Golviva's valuations: top_value (most valuable), undervalued / overvalued (biggest gap between our value and the market value, players worth €10M+), risers / fallers (largest recent value moves) and wonderkids (21 and under). Optional filters: league, national team, position group, maximum age.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `type` | `top_value` · `undervalued` · `overvalued` · `risers` · `fallers` · `wonderkids` | `"top_value"` |  |
+| `league` | string (≤ 60 chars) | — | League code or name |
+| `nation` | string (≤ 60 chars) | — | National team ISO-3 code or English name |
+| `position` | `GK` · `DF` · `MF` · `FW` | — |  |
+| `max_age` | integer (15–45) | — |  |
+| `limit` | integer (1–25) | `10` |  |
+
+## `list_leagues` — List leagues
+
+Every league Golviva values (the European first divisions plus MLS and the Saudi Pro League): strength tier, clubs, players and total squad value by Golviva and by the market. Use the returned codes with get_league, get_standings, find_players and get_rankings.
+
+Open-world: **no**
+
+No arguments.
+
+## `get_league` — League overview
+
+One league's clubs ranked by Golviva squad value (with the market's figure and the gap), plus its most valuable players. For the live points table use get_standings.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `league` | string (≤ 60 chars) | **required** | League code or name, e.g. "GB1", "Premier League", "TR1", "Süper Lig" |
+
+## `get_club` — Club squad & value
+
+A club's squad with every player's Golviva value, market value and the gap between them, plus the squad totals (value, market value, average age). Accepts a club id or name.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `club` | string (≤ 80 chars) | **required** | Club id (from search) or name, e.g. "Galatasaray", "Real Madrid" |
+
+## `get_national_team` — National team squad
+
+The strongest squad Golviva can assemble for a national team (3 GK, 8 DF, 8 MF, 7 FW — top players by value among those who represent the nation), with squad value and average age. Accepts an ISO-3 code or an English country name.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `nation` | string (≤ 60 chars) | **required** | ISO-3 code (TUR, ESP, BRA, ENG, GER…) or English name ("Turkey", "Brazil") |
+
+## `get_matches` — Scores & fixtures
+
+Live scores, results and fixtures across the competitions Golviva follows (top European leagues, MLS, Saudi Pro League, European club cups, domestic cups, national-team tournaments). Choose live, today, yesterday, tomorrow or a date, and optionally filter by competition or team. Returns match ids for get_match.
+
+Open-world: **yes (API-Football)**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `when` | string (≤ 20 chars) | `"today"` | "live", "today", "yesterday", "tomorrow" or a date as YYYY-MM-DD (UTC) |
+| `competition` | string (≤ 60 chars) | — | Competition code or name, e.g. "GB1", "UCL", "Süper Lig" |
+| `team` | string (≤ 60 chars) | — | Only matches involving this team (part of its name) |
+
+## `get_match` — Match centre
+
+One match in detail: score and status, the event timeline (goals, cards, substitutions, VAR), team statistics (possession, shots, xG when available…), line-ups with player ratings and, for the leagues Golviva values, its model's prediction (win/draw/loss chances, likeliest score) with the predicted line-ups until the official ones are out. Take match ids from get_matches or get_team_fixtures; get_match_prediction has the full prediction.
+
+Open-world: **yes (API-Football)**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `match_id` | integer | **required** | Match id from get_matches / get_team_fixtures |
+
+## `get_team_fixtures` — Team fixtures
+
+A club's or national team's next or most recent matches in any competition, with kick-off times, scores and match ids. Set national=true to prefer the national team when a club shares the name.
+
+Open-world: **yes (API-Football)**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `team` | string (≤ 60 chars) | **required** | Team name, e.g. "Galatasaray", "Real Madrid", "Turkey" |
+| `direction` | `next` · `last` | `"next"` |  |
+| `count` | integer (1–10) | `5` |  |
+| `national` | boolean | — | true = national team, false = club |
+
+## `get_standings` — League table
+
+The live points table of a league or competition (played, won, drawn, lost, goals, goal difference, points, recent form and qualification/relegation zones). Current season by default.
+
+Open-world: **yes (API-Football)**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `league` | string (≤ 60 chars) | **required** | League code or name, e.g. "GB1", "Premier League", "TR1", "UCL" |
+| `season` | integer (2010–2100) | — | Season start year, e.g. 2025 for 2025/26 (default: current) |
+
+## `get_predictions` — Match predictions
+
+Golviva's daily match predictions: every morning, before the first kick-off, Golviva's statistical model locks in the day's 10 most confident calls across the leagues it follows (match result, double chance, total goals or both teams to score) and marks each right or wrong after the final whistle. Returns one prediction day — the model's probability for each call, its likeliest score and scorers, the live or final score — plus the model's hit rate over the last 7 and 30 days. For one particular match (any match of those leagues) use get_match_prediction. Model probabilities, not odds.
+
+Open-world: **yes (API-Football)**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `day` | string (≤ 20 chars) | `"today"` | "today" (the current prediction day), "yesterday", or a date as YYYY-MM-DD. A prediction day runs 09:00 → 09:00 UTC |
+| `team` | string (≤ 60 chars) | — | Only the day's predictions for matches involving this team (part of its name) |
+
+## `get_match_prediction` — Match prediction
+
+Golviva's prediction for one match: the model's chances of a home win, a draw and an away win, the likeliest scores, total goals and both teams to score, the likeliest scorers and the predicted line-ups (the confirmed ones about an hour before kick-off), and after the final whistle whether it came in. Covers every match of the leagues Golviva values from about a day and a half before kick-off. Pass a match id, a team (its next match) or a league (its predicted matches, soonest first); with none, the next predicted matches in every league. For the day's 10 most confident calls and the model's track record use get_predictions. Model probabilities, not odds.
+
+Open-world: **yes (API-Football)**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `match_id` | integer | — | Match id from get_matches / get_team_fixtures |
+| `team` | string (≤ 60 chars) | — | A team's name: the prediction for its next match |
+| `league` | string (≤ 60 chars) | — | League code or name, e.g. "GB1", "Premier League", "Süper Lig": its predicted matches |
+
+## `get_season_projection` — Season projection
+
+Golviva's projected final table for a league: its match model plays the rest of the season out thousands of times, giving every club its chance of winning the title, finishing in the top four and the Champions League places, reaching Europe and going down, plus its expected points. Answers who will win the league, the title race, the top-four race and the relegation battle. Covers the round-robin leagues Golviva values (Premier League, LaLiga, Serie A, Bundesliga, Ligue 1, Eredivisie, Primeira Liga, Süper Lig and others); refreshed every 6 hours. Model probabilities, not odds.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `league` | string (≤ 60 chars) | **required** | League code or name, e.g. "GB1", "Premier League", "Süper Lig" |
+
+## `get_stat_leaders` — Statistics leaders
+
+Season leaderboards — top scorers, assist leaders, goals + assists, minutes or appearances — for one competition (a league, the Champions League, a domestic cup), all national-team competitions ("NT"), or every competition combined ("all"). Includes players outside Golviva's tracked leagues.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `metric` | `goals` · `assists` · `contributions` · `minutes` · `appearances` | `"goals"` |  |
+| `competition` | string (≤ 60 chars) | `"all"` | "all" (every competition combined), "NT" (national teams), or a competition code/name: GB1, ES1, IT1, L1, FR1, TR1, UCL, UEL, FAC… |
+| `season` | integer (2010–2100) | — | Season start year (2025 = 2025/26). Default: the latest season with data |
+| `position` | `GK` · `DF` · `MF` · `FW` | — |  |
+| `limit` | integer (1–25) | `10` |  |
+
+## `get_transfer_news` — Transfer news
+
+Latest transfer news and rumours: completed deals and reported moves with the fee, the clubs involved, how reliable the report is and when it broke. Optionally filter by a player or club name, or by confirmed deals vs rumours.
+
+Open-world: **no**
+
+| Argument | Type | Default | Notes |
+|---|---|---|---|
+| `query` | string (≤ 60 chars) | — | Player or club name to filter by |
+| `type` | `all` · `confirmed` · `rumors` | `"all"` |  |
+| `limit` | integer (1–20) | `8` |  |

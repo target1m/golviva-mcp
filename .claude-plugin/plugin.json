@@ -1,0 +1,35 @@
+{
+  "name": "golviva",
+  "displayName": "Golviva",
+  "version": "2.1.0",
+  "description": "Football match predictions for every game of Europe's top leagues and its club competitions (win, draw and loss chances, likeliest scores, likely scorers, predicted line-ups), season projections with each club's title, top-four and relegation chances, and independent player valuations with the reasons behind them — plus live scores, match centres, league tables, stat leaders and transfer news. Ask who will win a match or the league, what any player is really worth and why, and follow scores and tables — all read-only.",
+  "author": {
+    "name": "Golviva",
+    "email": "admin@golviva.com",
+    "url": "https://golviva.com/"
+  },
+  "homepage": "https://golviva.com/en/mcp",
+  "repository": "https://github.com/target1m/golviva-mcp",
+  "documentationUrl": "https://golviva.com/en/mcp",
+  "supportUrl": "https://golviva.com/en/support",
+  "privacyPolicyUrl": "https://golviva.com/en/privacy",
+  "termsOfServiceUrl": "https://golviva.com/en/terms",
+  "license": "MIT",
+  "keywords": [
+    "football",
+    "soccer",
+    "match predictions",
+    "predicted lineups",
+    "season projections",
+    "transfer value",
+    "player valuation",
+    "scouting",
+    "live scores",
+    "league tables",
+    "statistics",
+    "transfer news",
+    "premier league",
+    "la liga",
+    "super lig"
+  ]
+}

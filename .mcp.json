@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "golviva": {
+      "type": "http",
+      "url": "https://api.golviva.com/mcp"
+    }
+  }
+}
