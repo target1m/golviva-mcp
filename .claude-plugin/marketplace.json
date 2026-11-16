@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Golviva MCP — football match predictions, season projections, independent player valuations, live scores, league tables, stat leaders and transfer news. Read-only.",
-    "version": "2.1.1"
+    "version": "2.1.2"
   },
   "plugins": [
     {
       "name": "golviva",
       "source": "./",
       "description": "Football match predictions for every match of 26 leagues, the European club competitions and national teams (win, draw and loss chances, likeliest scores, likely scorers, predicted line-ups), season projections with each club's title, top-four and relegation chances, and independent player valuations with the reasons behind them — plus live scores, match centres, league tables, stat leaders and transfer news. Ask who will win a match or the league, what any player is really worth and why, and follow scores and tables — all read-only.",
-      "version": "2.1.1",
+      "version": "2.1.2",
       "author": {
         "name": "Golviva",
         "url": "https://golviva.com/"

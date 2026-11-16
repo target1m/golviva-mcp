@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "golviva",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Football match predictions for every match of 26 leagues, the Champions League, Europa League and Conference League and senior national teams — win, draw and loss chances, likeliest scores, likely scorers and predicted line-ups — plus season projections with each club's title, top-four and relegation chances, independent player valuations with the reasons behind them, scouting, live scores, match centres, league tables, season statistics and transfer news.",
   "author": {
     "name": "T1M LLC",

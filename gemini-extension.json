@@ -1,6 +1,6 @@
 {
   "name": "golviva",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Football match predictions for every match of 26 leagues, the European cups and national teams, title and relegation chances, player valuations, live scores, league tables, stat leaders and transfer news. Read-only.",
   "mcpServers": {
     "golviva": {
