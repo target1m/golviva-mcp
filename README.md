@@ -72,7 +72,8 @@ gemini extensions install https://github.com/target1m/golviva-mcp
 
 Then run `/mcp auth golviva` once inside Gemini CLI to sign in.
 
-**Cursor**: use the **Add to Cursor** button above, or add it to `~/.cursor/mcp.json` and click *Needs login*:
+**Cursor**: use the **Add to Cursor** button above, or add it to `~/.cursor/mcp.json` and click *Needs login* (the
+repository is also a Cursor plugin with the four skills, `.cursor-plugin/`):
 
 ```json
 { "mcpServers": { "golviva": { "url": "https://api.golviva.com/mcp" } } }
@@ -265,6 +266,7 @@ answer. This repository is also an installable **plugin** with four skills:
 plugin.json                       portable manifest (Agent Plugins 1.0.0) + ChatGPT/Codex listing metadata
 .claude-plugin/plugin.json        the same, for clients that read this path
 .claude-plugin/marketplace.json   makes this repository a Claude Code plugin marketplace
+.cursor-plugin/plugin.json        Cursor plugin (server + skills), also read by Grok Bot
 mcp.json                          the hosted server, for Agent Plugins hosts (Codex, ChatGPT)
 .mcp.json                         the hosted server, for Claude Code
 gemini-extension.json             Gemini CLI extension (server + skills, OAuth sign-in)
