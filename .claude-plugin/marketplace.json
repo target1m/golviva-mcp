@@ -2,23 +2,23 @@
   "name": "golviva-mcp",
   "owner": {
     "name": "Golviva",
-    "email": "admin@golviva.com"
+    "email": "support@golviva.com"
   },
   "metadata": {
     "description": "Golviva MCP — football match predictions, season projections, independent player valuations, live scores, league tables, stat leaders and transfer news. Read-only.",
-    "version": "2.1.0"
+    "version": "2.1.1"
   },
   "plugins": [
     {
       "name": "golviva",
       "source": "./",
-      "description": "Football match predictions for every game of Europe's top leagues and its club competitions (win, draw and loss chances, likeliest scores, likely scorers, predicted line-ups), season projections with each club's title, top-four and relegation chances, and independent player valuations with the reasons behind them — plus live scores, match centres, league tables, stat leaders and transfer news. Ask who will win a match or the league, what any player is really worth and why, and follow scores and tables — all read-only.",
-      "version": "2.1.0",
+      "description": "Football match predictions for every match of 26 leagues, the European club competitions and national teams (win, draw and loss chances, likeliest scores, likely scorers, predicted line-ups), season projections with each club's title, top-four and relegation chances, and independent player valuations with the reasons behind them — plus live scores, match centres, league tables, stat leaders and transfer news. Ask who will win a match or the league, what any player is really worth and why, and follow scores and tables — all read-only.",
+      "version": "2.1.1",
       "author": {
         "name": "Golviva",
         "url": "https://golviva.com/"
       },
-      "homepage": "https://golviva.com/en/mcp",
+      "homepage": "https://golviva.com/mcp",
       "repository": "https://github.com/target1m/golviva-mcp",
       "license": "MIT",
       "keywords": [
@@ -26,6 +26,7 @@
         "soccer",
         "match predictions",
         "predicted lineups",
+        "national teams",
         "season projections",
         "transfer value",
         "player valuation",

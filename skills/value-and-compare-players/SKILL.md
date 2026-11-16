@@ -9,6 +9,10 @@ Tools: `get_player` (one profile), `compare_players` (2–4 players), and `searc
 when a name is ambiguous or partial — `get_player` and `compare_players` take plain names
 directly. Full argument list: [`references/tools.md`](references/tools.md).
 
+Golviva values every player of 26 leagues (`list_leagues`: Europe's top divisions, the
+Championship, MLS, the Saudi Pro League, Brazil and Egypt), plus the national-team squads it
+follows. If a player can't be found, say Golviva doesn't value him rather than guessing a number.
+
 ## Read the two numbers correctly
 
 - **Golviva value** is our estimate; **market value** is the public consensus figure it is

@@ -4,7 +4,7 @@
   "title": "Golviva",
   "description": "Football match predictions, title race chances, player valuations, live scores, tables and news.",
   "version": "2.1.0",
-  "websiteUrl": "https://golviva.com/en/mcp",
+  "websiteUrl": "https://golviva.com/mcp",
   "repository": {
     "url": "https://github.com/target1m/golviva-mcp",
     "source": "github",

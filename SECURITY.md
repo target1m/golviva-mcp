@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Email **admin@golviva.com** with "SECURITY" in the subject, a description, the affected component
+Email **support@golviva.com** with "SECURITY" in the subject, a description, the affected component
 (this repository's manifests and skills, or the hosted server at `https://api.golviva.com/mcp`) and
 steps to reproduce. Please do not open a public issue for a vulnerability. We aim to acknowledge
 reports within a few business days.
@@ -16,7 +16,7 @@ reports within a few business days.
 - Authentication is OAuth 2.1 against Golviva's own authorization server (dynamic client
   registration, client ID metadata documents, PKCE S256, scope `golviva.read`, OpenID Connect), or
   a personal `fvk_` API key that the user can revoke at any time from
-  <https://golviva.com/en/mcp#account>. Tokens are opaque and checked on every call, so
+  <https://golviva.com/mcp#account>. Tokens are opaque and checked on every call, so
   disconnecting an app ends its access immediately.
 
 ## Supported versions

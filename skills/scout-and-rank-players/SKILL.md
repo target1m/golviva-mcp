@@ -18,7 +18,8 @@ Full argument list:
 
 ## Turning a brief into `find_players` filters
 
-- `league`, `club` and `nation` take names or codes ("Serie A" or `IT1`, "Turkey" or `TUR`).
+- `league`, `club` and `nation` take names or codes ("Serie A" or `IT1`, "Brasileirão" or `BRA1`,
+  "Championship" or `GB2`, "Turkey" or `TUR`). `list_leagues` lists all 26 leagues with their codes.
 - `position` is a group (`GK`, `DF`, `MF`, `FW`) or an exact role (`CB`, `LB`, `RB`, `DM`, `CM`,
   `AM`, `LM`, `RM`, `LW`, `RW`, `SS`, `ST`). "Full-back" means two calls, `LB` and `RB`; "winger"
   means `LW` and `RW`; "striker" is `ST` (or `FW` for any forward).
